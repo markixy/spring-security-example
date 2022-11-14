@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30m # 最大不连续操作的的过期时间，默认为30分钟。若配置小于1分钟，则实际生效为1分钟。
+      cookie:
+        max-age: -1 # cookie过期时间，默认为-1，表示浏览器关闭时删除cookie。
+
+spring:
+  security:
+    user:
+      name: user
+      password: 123456
+
+logging:
+  level:
+    root: info
+
+    org.springframework.boot.context.config.ConfigFileApplicationListener: debug #加载配置文件
+
+    org.springframework.boot.web.servlet.ServletContextInitializerBeans: debug #添加servlet/filter
+    org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration: debug
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter: debug
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
+    org.springframework.web.servlet.handler.SimpleUrlHandlerMapping: trace
+    org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping: trace
+    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: debug
+
+#    org.springframework.security.web: debug
+    org.springframework.security.web.FilterChainProxy: debug #过滤器执行顺序
+    org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource: debug #url 权限配置
+    org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource: info #方法 权限配置
+    org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration: debug
